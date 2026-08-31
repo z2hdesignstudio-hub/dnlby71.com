@@ -1,0 +1,94 @@
+:root {
+  --navy: #132D55;
+  --navy-dark: #0B1B35;
+  --teal: #1CA686;
+  --lime: #A8E305;
+  --cyan: #01F6D8;
+  --pink: #FE00BC;
+  --cream: #F0F5EE;
+  --gold: #F4B93E;
+  --r: 18px;
+  --r-sm: 12px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: radial-gradient(circle at 50% 0%, var(--navy) 0%, var(--navy-dark) 65%);
+  color: #fff;
+  overflow: hidden;
+}
+h1, h2, h3, .brand { font-family: 'Fredoka', sans-serif; }
+
+/* ============ TV LAYOUT (16:9, three columns) ============ */
+.tv-shell { display: flex; flex-direction: column; height: 100vh; padding: 22px 28px 12px; }
+.tv-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 18px; }
+.tv-header img { height: 56px; }
+.tv-header .title { font-size: 1.8rem; font-weight: 700; letter-spacing: .5px; }
+.tv-header .title .accent { color: var(--cyan); }
+
+.tv-columns { flex: 1; display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 20px; min-height: 0; }
+.tv-col { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--r);
+  padding: 20px; display: flex; flex-direction: column; min-height: 0; backdrop-filter: blur(6px); }
+.tv-col-title { text-align: center; font-weight: 800; font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 14px; }
+
+.tv-footer { text-align: center; font-size: .72rem; color: rgba(255,255,255,.35); font-weight: 700; padding-top: 10px; }
+
+/* Court panel (live match card, big and readable from a distance) */
+.court-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.court-panel .stage-tag { font-weight: 800; font-size: .82rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.court-panel .match-type { font-weight: 700; font-size: 1.15rem; color: var(--gold); margin-bottom: 18px; }
+.court-panel .team-block { margin-bottom: 6px; }
+.court-panel .team-name { font-weight: 800; font-size: 1.3rem; }
+.court-panel .players { font-size: .85rem; color: rgba(255,255,255,.6); font-weight: 700; margin-bottom: 4px; }
+.court-panel .score { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 3.4rem; line-height: 1; }
+.court-panel .score.winner { color: var(--lime); }
+.court-panel .vs-line { color: rgba(255,255,255,.3); font-weight: 800; font-size: .9rem; margin: 8px 0; }
+.court-panel .empty-note { color: rgba(255,255,255,.4); font-weight: 700; font-size: .95rem; }
+
+/* Standings table (middle column) */
+.standings-table { width: 100%; border-collapse: collapse; }
+.standings-table th { text-align: left; padding: 8px 10px; font-size: .68rem; text-transform: uppercase;
+  letter-spacing: .5px; color: rgba(255,255,255,.45); font-weight: 800; border-bottom: 1px solid rgba(255,255,255,.1); }
+.standings-table td { padding: 12px 10px; font-weight: 700; font-size: .98rem; border-bottom: 1px solid rgba(255,255,255,.06); }
+.standings-table tr.qualifying td { color: var(--lime); }
+.standings-table .rank-num { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.1rem; width: 30px; }
+
+/* ============ BRACKET (shared between TV middle column and phone) ============ */
+.bracket-wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+.bracket-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-sm);
+  padding: 10px 14px; min-width: 150px; }
+.bracket-box .stage-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; color: var(--cyan); letter-spacing: .5px; margin-bottom: 6px; }
+.bracket-box .team-line { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-weight: 700; font-size: .88rem; }
+.bracket-box .team-line.winner { color: var(--lime); }
+.bracket-box .team-line .pts { font-family: 'Fredoka', sans-serif; }
+
+/* ============ PHONE LAYOUT ============ */
+.phone-shell { height: 100vh; display: flex; flex-direction: column; padding: 14px; overflow-y: auto; }
+.phone-header { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0 14px; }
+.phone-header img { height: 34px; }
+.phone-header .title { font-size: 1.15rem; font-weight: 700; }
+
+.phone-section { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--r);
+  padding: 16px; margin-bottom: 14px; }
+.phone-section-title { font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); margin-bottom: 10px; }
+.phone-court-card { cursor: pointer; }
+.phone-court-card:active { transform: scale(.98); }
+.phone-tap-hint { text-align: center; font-size: .7rem; color: rgba(255,255,255,.35); font-weight: 700; margin-top: 10px; }
+
+.phone-detail-overlay { position: fixed; inset: 0; background: var(--navy-dark); z-index: 50; overflow-y: auto; padding: 16px; }
+.phone-detail-back { background: rgba(255,255,255,.08); border: none; color: #fff; font-weight: 800; padding: 10px 16px;
+  border-radius: var(--r-sm); margin-bottom: 16px; cursor: pointer; }
+.phone-sub-match-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.phone-sub-match-row .type { font-weight: 700; font-size: .88rem; }
+.phone-sub-match-row .names { font-size: .74rem; color: rgba(255,255,255,.55); font-weight: 600; }
+.phone-sub-match-row .score { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.1rem; }
+
+.phone-footer { text-align: center; font-size: .68rem; color: rgba(255,255,255,.3); font-weight: 700; padding: 14px 0 6px; }
+
+@media (max-width: 480px) {
+  .court-panel .score { font-size: 2.2rem; }
+  .court-panel .team-name { font-size: 1.05rem; }
+}
